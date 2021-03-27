@@ -15,5 +15,6 @@ print(h)
 cred = credentials.Certificate(json.loads(h))
 firebase_admin.initialize_app(cred)
 
+
 def d_get_room(code):
-  return True
+    return True
