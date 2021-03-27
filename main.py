@@ -1,8 +1,10 @@
-from flask import Flask, render_template, redirect, url_for, request, flash, session
-from flask_socketio import SocketIO
-from data import *
-
 import random
+
+from flask import (Flask, flash, redirect, render_template, request, session,
+                   url_for)
+from flask_socketio import SocketIO
+
+from data import *
 
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
