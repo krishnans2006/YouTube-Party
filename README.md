@@ -24,13 +24,15 @@ I worked on both the backend and the frontend. Implemented functionallity to the
 I worked on the frontend of the website. I took care of setting up the HTML files, and linking them to the stylesheets. I also made custom styles for the site, to organize the elements and give it the YouTube feel!
 
 ## Challenges we ran into
-One of the major challenges we ran into was setting up SocketIO. First, there were some issues with not being able to access the socket, which meant we needed to approve our domain to be used with SocketIO. And then, we had a lot of version compatibility issues, where the JavaScript SocketIO, Python SocketIO, and 
+One of the major challenges we ran into was setting up SocketIO. First, there were some issues with not being able to access the socket, which meant we needed to approve our domain to be used with SocketIO. And then, we had a lot of version compatibility issues, where the JavaScript SocketIO, Flask SocketIO, and Python EngineIO were not compatible. Finally, after many more issues, we resolved it all, and it was all worth it to get a live chat loading for the first time!
+
+Another challenge was getting the YouTube video to load. The YouTube Embed API required a link different than that of normal YouTube video links, so we needed to edit the URL a lot. Additionally, the videos loaded with HTTP, which meant that there was a huge error whenever someone loaded the site using HTTPS, a more secure protocol. However, just like the live chat, it felt great when the video finally loaded!
 
 ## Accomplishments that we're proud of
-We're all very proud of the fact that we created such a big, multifunctional, realtime application in a short amount of time. We deci
+We're all very proud of the fact that we created such a big, multifunctional, realtime application in a short amount of time. We had never used SocketIO before in our lives, and we couldn't imagine learning *and* implementing it within a day and a half. This was a great experience for all of us, and we really enjoyed it!
 
 ## What we learned
 Although we were comfortable using Flask, none of us had ever used SocketIO before, and we were dreding it. This project was our first time ever trying out SocketIO, and it was an amazing experience. After all the bugs were fixed, it was just so cool to watch the server update live!
 
 ## What's next for YouTube Party
-In the future, we hope to implement realtime pause, play, and bookmark functionality to the app. We also hope to implement the limitation of anyone joining the room, meaning that the host has the ability to accept or deny accsess to the room through username broadcasting
+In the future, we hope to implement realtime pause, play, and bookmark functionality to the app. We also hope to implement the limitation of anyone joining the room, meaning that the host has the ability to accept or deny accsess to the room through username broadcasting. These are features that we couldn't get to implementing in the time we had.
