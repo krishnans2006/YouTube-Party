@@ -131,4 +131,12 @@ def logout():
 
 
 if __name__ == "__main__":
+  try:
+    from pip._internal.operations import freeze
+  except ImportError:  # pip < 10.0
+      from pip.operations import freeze
+
+  x = freeze.freeze()
+  for p in x:
+      print(p)
   socketio.run(app, host="0.0.0.0", debug=True)
