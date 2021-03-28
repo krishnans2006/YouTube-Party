@@ -1,0 +1,167 @@
+ {% extends "base.html" %} {% block title %}{% endblock title %} {% block head %}
+<style>
+	.iframe-container {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 80%;
+		height: 80%;
+		margin: 0;
+		position: absolute;
+		top: 50%;
+		-ms-transform: translateY(-50%);
+		transform: translateY(-50%);
+	}
+
+	#chat {
+		cursor: no-drop;
+		background: none;
+		color: white;
+	}
+
+	body {
+		background: linear-gradient(270deg, #d53737, #ff4444);
+		background-size: 400% 400%;
+
+		-webkit-animation: animateBackground 0s ease infinite;
+		-moz-animation: animateBackground 0s ease infinite;
+		animation: animateBackground 0s ease infinite;
+	}
+
+	@-webkit-keyframes animateBackground {
+		0% {
+			background-position: 0% 50%
+		}
+		50% {
+			background-position: 100% 50%
+		}
+		100% {
+			background-position: 0% 50%
+		}
+	}
+
+	@-moz-keyframes animateBackground {
+		0% {
+			background-position: 0% 50%
+		}
+		50% {
+			background-position: 100% 50%
+		}
+		100% {
+			background-position: 0% 50%
+		}
+	}
+
+	@keyframes animateBackground {
+		0% {
+			background-position: 0% 50%
+		}
+		50% {
+			background-position: 100% 50%
+		}
+		100% {
+			background-position: 0% 50%
+		}
+	}
+
+	.videoBox {
+		width: 50%;
+		height: 25%;
+		background-color: #000;
+		display: inline-block;
+		margin-left: 100px;
+	}
+
+	.chatBox {
+		width: 100px;
+		height: 360px;
+		background-color: #000;
+		display: inline-block;
+		float: right;
+		margin-right: 100px;
+	}
+
+	.wrapper {
+		position: absolute;
+		top: 300px;
+		left: 200px;
+	}
+
+	::placeholder {
+		/* Chrome, Firefox, Opera, Safari 10.1+ */
+		color: white;
+		opacity: 1;
+		/* Firefox */
+	}
+
+	}
+</style>
+{% endblock head %} {% block content %}
+<p>Host: {{name}}</p>
+<p>Room Code: {{room}} </p>
+
+<div class="wrapper">
+
+	<iframe if="thevideoiframe" class="iframe-container" style="width: 1155px; height: 600px; margin: 0; position: fixed; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%); "
+	 src="{{video}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture "
+	 allowfullscreen></iframe>
+   <div>
+    <a href="#" onclick="leave_room(); " style="position: fixed; bottom: 0px; padding: 5px" class="btn btn-primary btn-xl js-scroll-trigger">Leave this room</a>
+  </div>
+
+</div>
+
+
+<textarea readonly id="chat" cols="45" rows="26" style="background-color: #fff; border: none; color: black; right: 0px; position: absolute; down: 40px"></textarea><br><br>
+
+<input id="text" size="80" placeholder="Enter your message here" style="border-style: solid; border-width: 1px; top: 700px; width:400px; position:fixed; padding:5px; bottom: 0px; left: 1154px"><br><br>
+
+
+<div class="wrapper">
+  <div class="videoBox">
+</div>
+
+
+
+</div>
+<br>
+
+{% endblock content %}
+
+{% block script %}
+<script type="text/javascript" charset="utf-8">
+	var socket;
+  $(document).ready(function(){
+      socket = io.connect("https://hackdefyproject.hackdefyteam.repl.co/room");
+      socket.on('connect', function() {
+          socket.emit('joined', {});
+      });
+      socket.on('status', function(data) {
+          $('#chat').val($('#chat').val() + '<' + data.msg + '>\n');
+          $('#chat').scrollTop($('#chat')[0].scrollHeight);
+          console.log(data)
+      });
+      socket.on('message', function(data) {
+          $('#chat').val($('#chat').val() + data.msg + '\n');
+          $('#chat').scrollTop($('#chat')[0].scrollHeight);
+          console.log(data)
+      });
+      $('#text').keypress(function(e) {
+          var code = e.keyCode || e.which;
+          if (code == 13) {
+              text = $('#text').val();
+              $('#text').val('');
+              socket.emit('text', {msg: text});
+          }
+          console.log(e)
+      });
+  });
+  function leave_room() {
+      socket.emit('left', {}, function() {
+          socket.disconnect();
+          console.log("Bye!")
+          window.location.href = "/";
+      });
+  }
+</script>
+{% endblock script %}

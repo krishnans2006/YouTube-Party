@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}YouTube Party{% endblock title %}
+
+{% block head %}
+<!-- Will go directly in head tag, at the end -->
+<style>
+  body {
+    background-image: url("https://i.ibb.co/QrP1YQh/bg-masthead.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover
+  }
+
+  .mainHeader{ 
+    color:black;
+  }
+  
+</style>
+{% endblock head %}
+
+{% block content %}
+
+{% if session.get("username") %}
+  
+<header class="masthead d-flex">
+  <div class="container text-center my-auto">
+    <h1 class="mb-1 mainHeader" >Youtube Party</h1>
+    <h3 class="mb-5">
+      <em>Join your friends to watch videos together!</em>
+    </h3>
+    <!-- Join Room -->
+    <form method="POST">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="-----" aria-describedby="basic-addon1" name="code">
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-primary btn-xl js-scroll-trigger"> Join a Room </button>
+        </div>
+      </div>
+    </form>
+    <!-- Create Room -->
+    <form method="POST">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Youtube Link" aria-describedby="basic-addon1" name="video">
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-primary btn-xl js-scroll-trigger">Create a Room</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</header>
+{% else %}
+<header class="masthead d-flex">
+  <div class="container text-center my-auto">
+    <h1 class="mb-1 mainHeader" >Youtube Party</h1>
+    <h3 class="mb-5">
+      <em>Join your friends to watch videos together!</em>
+    </h3>
+  </div>
+</header>
+
+<div class="card text-dark bg-light mb-3 login" style="max-width: 18rem; margin: 0; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%); left: 10%; position: fixed;">
+  <div class="card-header">Login</div>
+  <div class="card-body">
+    <h5 class="card-title">Login to your existing account!</h5>
+    <div class="input-group-append">
+      <a class="btn btn-primary btn-xl js-scroll-trigger" href="/login">Login</a>
+    </div>
+  </div>
+</div>
+
+
+<div class="card text-dark bg-light mb-3 signup" style="max-width: 18rem; margin: 0; position: fixed; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%); left: 75%">
+  <div class="card-header">SignUp</div>
+  <div class="card-body">
+    <h5 class="card-title">Make an account and start hanging with friends!</h5>
+    <div class="input-group-append">
+      <a class="btn btn-primary btn-xl js-scroll-trigger" href="/register">SignUp</a>
+    </div>
+  </div>
+</div>
+
+{% endif %}
+
+
+  <!-- Custom scripts for this template -->
+{% endblock content %}
+
+
