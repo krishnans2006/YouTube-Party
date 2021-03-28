@@ -21,7 +21,6 @@ I mainly worked on the backend of the project. I created the Flask routes to ref
 I worked on both the backend and the frontend. Implemented functionallity to the website and help create a connection with the backend to the the frontend. Additionally, I helped debug and fix errors that were in the app and helped it run smoother and faster! Finally, I helped style the website to make it more appealing and responsive!
 
 ### Rishav N
-I'll brb in ~10 mins - Krishnan
 
 ## Challenges we ran into
 
