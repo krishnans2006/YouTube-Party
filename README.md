@@ -9,7 +9,7 @@ Have you ever wanted to connect with friends or family and watch youtube videos 
 Our inspiration for this project was the current pandemic situation. Although some theaters are open, many of us are scared by the virus and try to stay at home as much as possible. However, when being stuck at home, you normally get very little social activity. This is our inspiration for YouTube Party - to connect people through what they love, watching YouTube.
 
 ## What it does
-YouTube Party 
+YouTube Party is
 
 ## How we built it
 YouTube Party was built using a Firebase database, Flask for web routing, SocketIO for realtime communication, and HTML, CSS, Bootstrap, and JavaScript for the frontend look and styles.
