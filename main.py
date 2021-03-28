@@ -139,4 +139,4 @@ if __name__ == "__main__":
   x = freeze.freeze()
   for p in x:
       print(p)
-  socketio.run(app, host="0.0.0.0", debug=True)
+  socketio.run(app)
