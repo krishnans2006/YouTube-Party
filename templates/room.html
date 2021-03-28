@@ -132,7 +132,7 @@
 <script type="text/javascript" charset="utf-8">
 	var socket;
   $(document).ready(function(){
-      socket = io.connect("https://hackdefyproject.hackdefyteam.repl.co/room");
+      socket = io.connect("https://youtubewatchparty.herokuapp.com/room");
       socket.on('connect', function() {
           socket.emit('joined', {});
       });
